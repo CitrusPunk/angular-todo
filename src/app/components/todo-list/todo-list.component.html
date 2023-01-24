@@ -1,0 +1,16 @@
+<div>
+  <input
+    [(ngModel)]="searchItem.text"
+    placeholder="search"
+    type="text"
+    (ngModelChange)="onSearchItem()"
+  />
+</div>
+<div>
+  <input [(ngModel)]="addItem.text" placeholder="add" type="text" />
+  <button (click)="onAddItem(addItem)">Add</button>
+</div>
+<div *ngFor="let item of filteredList">
+  <input [(ngModel)]="item.text" type="text" />
+  <button (click)="onResetItem(item)">X</button>
+</div>
