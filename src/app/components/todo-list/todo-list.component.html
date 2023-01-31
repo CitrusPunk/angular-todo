@@ -17,6 +17,7 @@
 
   <div class="item padding-inline flex-between" *ngFor="let item of filteredList; let i = index">
     <input [(ngModel)]="filteredList[i]" type="text" />
-    <button (click)="onResetItem(item)">X</button>
+    <button (click)="onDeleteItem(i)">X</button>
+    <i class="fa-solid fa-trash"></i>
   </div>
 </div>

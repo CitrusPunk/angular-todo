@@ -26,8 +26,8 @@ export class TodoListComponent {
     this.addItem = '';
   }
 
-  onResetItem(item: string) {
-    this._itemList.splice(this._itemList.indexOf(item), 1);
+  onDeleteItem(index: number) {
+    this._itemList.splice(index, 1);
   }
 
   onAddItem(addItem: string) {
