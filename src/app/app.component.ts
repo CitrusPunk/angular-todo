@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ECategory } from './enums/ecategory';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +8,5 @@ import { ECategory } from './enums/ecategory';
 export class AppComponent {
   title = 'angular-todo';
   listName = 'Grocery';
-  itemList = [{text: 'start item', category: ECategory.freetime }, {text: 'next item', category: ECategory.freetime},{text: 'last item', category: ECategory.work }];
+  itemList = ['start item', 'next item', 'last item',];
 }

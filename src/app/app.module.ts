@@ -5,13 +5,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
-import { TodoListSearchbarComponent } from './components/todo-list-searchbar/todo-list-searchbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoListComponent,
-    TodoListSearchbarComponent,
   ],
   imports: [
     BrowserModule,

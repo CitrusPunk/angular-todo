@@ -1,6 +1,4 @@
 import { Component, Input, SimpleChanges } from '@angular/core';
-import { ECategory } from 'src/app/enums/ecategory';
-import { IItem } from 'src/app/interfaces/iitem';
 
 @Component({
   selector: 'app-todo-list',
@@ -8,43 +6,43 @@ import { IItem } from 'src/app/interfaces/iitem';
   styleUrls: ['./todo-list.component.sass'],
 })
 export class TodoListComponent {
-  searchItem: IItem;
-  filteredList: IItem[] = [];
-  addItem: IItem;
-  private _itemList: IItem[] = [];
+  searchItem: string;
+  filteredList: string[] = [];
+  addItem: string;
+  private _itemList: string[] = [];
 
   @Input() listName: string;
-  @Input() set itemList(value: IItem[]) {
+  @Input() set itemList(value: string[]) {
     this._itemList = value;
     this.filteredList = this._itemList;
   }
-  get itemList(): IItem[] {
+  get itemList(): string[] {
     return this._itemList;
   }
 
   constructor() {
     this.listName = '';
-    this.searchItem = { text: '', category: ECategory.freetime };
-    this.addItem = { text: '', category: ECategory.freetime };
+    this.searchItem = '';
+    this.addItem = '';
   }
 
-  onResetItem(item: IItem) {
+  onResetItem(item: string) {
     this._itemList.splice(this._itemList.indexOf(item), 1);
   }
 
-  onAddItem(addItem: IItem) {
-    if (addItem.text) {
+  onAddItem(addItem: string) {
+    if (addItem) {
       this._itemList.push(addItem);
-      this.addItem = { text: '', category: ECategory.freetime };
-      this.searchItem.text = '';
+      this.addItem = '';
+      this.searchItem = '';
       this.onSearchItem();
     }
   }
 
   onSearchItem() {
-    if (this.searchItem.text) {
+    if (this.searchItem) {
       this.filteredList = this._itemList.filter((el) =>
-        el.text.includes(this.searchItem.text)
+        el.includes(this.searchItem)
       );
     } else {
       this.filteredList = this._itemList;

@@ -2,18 +2,18 @@
   <h2>{{listName}}</h2>
   <div class="searchbar">
     <input
-      [(ngModel)]="searchItem.text"
+      [(ngModel)]="searchItem"
       placeholder="search"
       type="text"
       (ngModelChange)="onSearchItem()"
     />
   </div>
   <div class="addbar">
-    <input [(ngModel)]="addItem.text" placeholder="add" type="text" />
+    <input [(ngModel)]="addItem" placeholder="add" type="text" />
     <button (click)="onAddItem(addItem)">Add</button>
   </div>
-  <div class="item" *ngFor="let item of filteredList">
-    <input [(ngModel)]="item.text" type="text" />
+  <div class="item" *ngFor="let item of filteredList; let i = index">
+    <input [(ngModel)]="filteredList[i]" type="text" />
     <button (click)="onResetItem(item)">X</button>
   </div>
 </div>
