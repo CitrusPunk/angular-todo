@@ -1,4 +1,5 @@
 import { Component, Input, SimpleChanges } from '@angular/core';
+import { faTrash, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-todo-list',
@@ -6,6 +7,8 @@ import { Component, Input, SimpleChanges } from '@angular/core';
   styleUrls: ['./todo-list.component.sass'],
 })
 export class TodoListComponent {
+  faTrash = faTrash;
+  faPlus = faPlus;
   searchItem: string;
   filteredList: string[] = [];
   addItem: string;

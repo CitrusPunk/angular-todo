@@ -11,7 +11,9 @@
     </div>
     <div class="addbar padding-inline flex-between">
       <input [(ngModel)]="addItem" placeholder="add" type="text" />
-      <button (click)="onAddItem(addItem)">Add</button>
+      <button (click)="onAddItem(addItem)">
+        <fa-icon class="add-icon" [icon]="faPlus"></fa-icon>
+      </button>
     </div>
   </div>
 
@@ -25,7 +27,7 @@
       (focusout)="deleteIfEmpty(i)"
     />
     <button (click)="onDeleteItem(i)">
-      <i class="fa-solid fa-trash"></i>
+      <fa-icon class="delete-icon" [icon]="faTrash"></fa-icon>
     </button>
   </div>
 </div>
