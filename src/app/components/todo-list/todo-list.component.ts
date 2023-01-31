@@ -13,7 +13,7 @@ export class TodoListComponent {
 
   @Input() listName: string;
   @Input() set itemList(value: string[]) {
-    this._itemList = value;
+    this._itemList = [...value];
     this.filteredList = this._itemList;
   }
   get itemList(): string[] {
@@ -46,6 +46,17 @@ export class TodoListComponent {
       );
     } else {
       this.filteredList = this._itemList;
+    }
+  }
+
+  trackByIdx(index: number, obj: any): any {
+    return index;
+  }
+
+  deleteIfEmpty(index: number) {
+    console.log('focused out ' + index);
+    if (this.filteredList[index].length < 1) {
+      this._itemList.splice(index, 1);
     }
   }
 }

@@ -15,9 +15,17 @@
     </div>
   </div>
 
-  <div class="item padding-inline flex-between" *ngFor="let item of filteredList; let i = index">
-    <input [(ngModel)]="filteredList[i]" type="text" />
-    <button (click)="onDeleteItem(i)">X</button>
-    <i class="fa-solid fa-trash"></i>
+  <div
+    class="item padding-inline flex-between"
+    *ngFor="let item of filteredList; let i = index; trackBy: trackByIdx"
+  >
+    <input
+      [(ngModel)]="filteredList[i]"
+      type="text"
+      (focusout)="deleteIfEmpty(i)"
+    />
+    <button (click)="onDeleteItem(i)">
+      <i class="fa-solid fa-trash"></i>
+    </button>
   </div>
 </div>
