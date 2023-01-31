@@ -1,18 +1,21 @@
-<div>
-  <h2>{{listName}}</h2>
-  <div class="searchbar">
-    <input
-      [(ngModel)]="searchItem"
-      placeholder="search"
-      type="text"
-      (ngModelChange)="onSearchItem()"
-    />
+<div class="container">
+  <div class="header">
+    <h2 class="padding-inline">{{ listName }}</h2>
+    <div class="searchbar padding-inline">
+      <input
+        [(ngModel)]="searchItem"
+        placeholder="search"
+        type="text"
+        (ngModelChange)="onSearchItem()"
+      />
+    </div>
+    <div class="addbar padding-inline flex-between">
+      <input [(ngModel)]="addItem" placeholder="add" type="text" />
+      <button (click)="onAddItem(addItem)">Add</button>
+    </div>
   </div>
-  <div class="addbar">
-    <input [(ngModel)]="addItem" placeholder="add" type="text" />
-    <button (click)="onAddItem(addItem)">Add</button>
-  </div>
-  <div class="item" *ngFor="let item of filteredList; let i = index">
+
+  <div class="item padding-inline flex-between" *ngFor="let item of filteredList; let i = index">
     <input [(ngModel)]="filteredList[i]" type="text" />
     <button (click)="onResetItem(item)">X</button>
   </div>
