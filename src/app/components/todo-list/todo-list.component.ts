@@ -1,5 +1,10 @@
 import { Component, Input, SimpleChanges } from '@angular/core';
-import { faTrash, faPlus } from '@fortawesome/free-solid-svg-icons';
+import {
+  faTrash,
+  faPlus,
+  faEdit,
+  faXmark,
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-todo-list',
@@ -9,9 +14,13 @@ import { faTrash, faPlus } from '@fortawesome/free-solid-svg-icons';
 export class TodoListComponent {
   faTrash = faTrash;
   faPlus = faPlus;
-  searchItem: string;
+  faEdit = faEdit;
+  faXmark = faXmark;
+
+  isListNameEditable: boolean = false;
+  searchItem: string = '';
+  addItem: string = '';
   filteredList: string[] = [];
-  addItem: string;
   private _itemList: string[] = [];
 
   @Input() listName: string;
@@ -24,9 +33,20 @@ export class TodoListComponent {
   }
 
   constructor() {
+    this.isListNameEditable = false;
     this.listName = '';
     this.searchItem = '';
     this.addItem = '';
+    console.log(this.isListNameEditable)
+  }
+
+  onToggleNameEdit() {
+    this.isListNameEditable = !this.isListNameEditable;
+  }
+
+  onRefreshSearch() {
+    this.searchItem = '';
+    this.onSearchItem();
   }
 
   onDeleteItem(index: number) {
@@ -34,6 +54,7 @@ export class TodoListComponent {
   }
 
   onAddItem(addItem: string) {
+    console.log(addItem);
     if (addItem) {
       this._itemList.push(addItem);
       this.addItem = '';

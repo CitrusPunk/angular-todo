@@ -1,24 +1,48 @@
 <div class="container">
   <div class="header">
-    <h2 class="padding-inline">{{ listName }}</h2>
-    <div class="searchbar padding-inline">
+    <div class="padding-left flex-between">
       <input
+        class="heading"
+        [disabled]="isListNameEditable"
+        placeholder="List title"
+        type="text"
+        [(ngModel)]="listName"
+      />
+      <button (click)="onToggleNameEdit()">
+        <fa-icon class="add-icon" [icon]="faEdit"></fa-icon>
+      </button>
+    </div>
+    <div class="padding-left padding-right flex-between relative">
+      <input
+        class="search-bar"
         [(ngModel)]="searchItem"
-        placeholder="search"
+        placeholder="What are you looking for?"
         type="text"
         (ngModelChange)="onSearchItem()"
       />
+      <div [hidden]="!searchItem">
+        <button class="absolute-right" (click)="onRefreshSearch()">
+          <fa-icon class="add-icon" [icon]="faXmark"></fa-icon>
+        </button>
+      </div>
     </div>
-    <div class="addbar padding-inline flex-between">
-      <input [(ngModel)]="addItem" placeholder="add" type="text" />
-      <button (click)="onAddItem(addItem)">
-        <fa-icon class="add-icon" [icon]="faPlus"></fa-icon>
-      </button>
+    <div class="padding-left padding-right flex-between relative">
+      <input
+        class="search-bar"
+        [(ngModel)]="addItem"
+        placeholder="What have you planned?"
+        type="text"
+      />
+      <div [hidden]="!addItem">
+        <button class="absolute-right" (click)="onAddItem(addItem)">
+          <fa-icon class="add-icon" [icon]="faPlus"></fa-icon>
+        </button>
+      </div>
     </div>
   </div>
 
   <div
-    class="item padding-inline flex-between"
+    class="item padding-left flex-between"
     *ngFor="let item of filteredList; let i = index; trackBy: trackByIdx"
   >
     <input
