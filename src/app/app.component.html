@@ -1,11 +1,5 @@
 <div class="app">
-  <header>
-    <h2>Angular ToDo</h2>
-  </header>
   <router-outlet>
-    <app-todo-list></app-todo-list>
+    <app-todo-list [listName]="listName" [itemList]="itemList"></app-todo-list>
   </router-outlet>
-  <footer>
-    <h2>footer</h2>
-  </footer>
 </div>
